@@ -4,6 +4,8 @@ import Item from './components/Item.vue';
 import ButtonR from './components/ButtonR.vue';
 import FoodItem from './components/FoodItem.vue';
 
+
+let items=["Burger1","Burger2","Burger3"]
 </script>
 
 <template>
@@ -15,12 +17,8 @@ import FoodItem from './components/FoodItem.vue';
 
     </div>
     <div class="flex flex-col items-center gap-10">
- <FoodItem></FoodItem>
- <FoodItem></FoodItem>
- <FoodItem></FoodItem>
- <FoodItem></FoodItem>
- <FoodItem></FoodItem>
- <FoodItem></FoodItem>
+ <FoodItem v-for="item in items" :title="item"></FoodItem>
+
 
 
 </div>

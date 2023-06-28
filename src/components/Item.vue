@@ -12,6 +12,6 @@
 <div class="h-0 w-9/12 border border-black "></div>
 </template>
 <script>
-export default{};
+export default{}
 
 </script>
