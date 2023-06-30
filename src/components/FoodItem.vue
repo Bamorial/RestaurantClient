@@ -4,6 +4,8 @@
 
 
 import ButtonBuy from './ButtonBuy.vue';
+
+
 defineProps({
     name: String,
     description: String,
@@ -13,7 +15,10 @@ defineProps({
 
 
 
+
+
 </script>
+
 <template>
     <div class="boxStyle flex ">
        <img src="../assets/delfina-cocciardi-NDPBK-d-03M-unsplash.jpg" class="h-[80%] w-1/3 bg-slate-300 self-center m-3 rounded-md imageContain">
@@ -23,7 +28,7 @@ defineProps({
         <div class=" font-mono  mt-1">{{ description }}</div>
         <div class="flex justify-between">
             <div class="self-center font-semibold font-serif">{{price}}$</div>
-            <ButtonBuy class=" -mt-0 mr-10 "></ButtonBuy>
+            <ButtonBuy  class=" -mt-0 mr-10 "></ButtonBuy>
             
             
         </div>

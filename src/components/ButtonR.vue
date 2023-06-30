@@ -1,6 +1,6 @@
 
 <template>
-<button class="buttonStyle mt-7 flex justify-center items-center active:shadow-inner">
+<button class="buttonStyle mt-7 flex justify-center items-center active:shadow-inner active:translate-x-1 active:translate-y-1">
     <img class=" h-[30px]  w-[30px]" :src="imageLink" alt="">
 </button>
 </template>
