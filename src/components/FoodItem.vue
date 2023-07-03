@@ -28,7 +28,7 @@ defineProps({
         <div class=" font-mono  mt-1">{{ description }}</div>
         <div class="flex justify-between">
             <div class="self-center font-semibold font-serif">{{price}}$</div>
-            <ButtonBuy  class=" -mt-0 mr-10 "></ButtonBuy>
+            <ButtonBuy @click="$emit('buy')" class=" -mt-0 mr-10 "></ButtonBuy>
             
             
         </div>

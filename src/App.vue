@@ -4,17 +4,24 @@ import Item from './components/Item.vue';
 import ButtonR from './components/ButtonR.vue';
 import FoodItem from './components/FoodItem.vue';
 import ButtonBuy from './components/ButtonBuy.vue';
+import ButtonCheckout from './components/ButtonCheckout.vue';
+import { useRoute } from 'vue-router';
+import { getCurrentInstance } from 'vue';
+import { ref } from 'vue';
 
 
+
+
+// Compute whether items is an array or not
 
 </script>
 
 <template>
-     <div class="flex justify-between sticky top-0 pointer-events-none">
+     <div class="flex justify-between sticky top-0 pointer-events-none -z-10">
     
-    <img class="scale-50 -ml-20 -mt-[70px] z-10 " src="./assets/LT.svg" alt="">
-     <ButtonR @click="Navigate()" imageLink="/src/assets/basket.svg" class="z-20 pointer-events-auto"/>
-    <img class="scale-50 -mr-20 -mt-[70px] z-10" src="./assets/RT.svg" alt="">
+    <img class="scale-50 -ml-20 -mt-[70px] -z-10 " src="./assets/LT.svg" alt="">
+     
+    <img class="scale-50 -mr-20 -mt-[70px] -z-10" src="./assets/RT.svg" alt="">
 
    </div>
 <RouterView></RouterView>
@@ -41,6 +48,3 @@ import ButtonBuy from './components/ButtonBuy.vue';
 <style scoped>
 
 </style>
-<script>
-
-</script>

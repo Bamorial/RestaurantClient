@@ -14,6 +14,7 @@
 <script setup>
 
 import Item from './Item.vue';
+import { RouterLink } from 'vue-router';
 
 
 const items=[{

@@ -4,17 +4,36 @@
 import { RouterView, loadRouteLocation, routerKey, useRoute } from 'vue-router';
 import ButtonR from './ButtonR.vue';
 import FoodItem from './FoodItem.vue';
+import ButtonCheckout from './ButtonCheckout.vue';
 
 import itemsGetter from '../ItemsGetter.js'
 import { inject, onMounted } from 'vue';
+import { jsx } from 'vue/jsx-runtime';
+
 
 const route= useRoute();
 const id= route.params.id
-
+localStorage.setItem('table', route.params.table)
 const items=itemsGetter(id)
 
-function Hello(){
-  console.log("Hello");
+
+//console.log(nonPars)
+
+let checkoutItems=JSON.parse(localStorage.getItem('basket'))
+
+
+
+
+
+function AddItem(item){
+  if (!Array.isArray(checkoutItems)) {
+    checkoutItems = [];
+  }
+  checkoutItems.push(item);
+  localStorage.setItem('basket',JSON.stringify(checkoutItems))
+
+  console.log(checkoutItems)
+
 }
 </script>
 
@@ -30,8 +49,9 @@ function Hello(){
      <img class="scale-50 -mr-20 -mt-[70px] z-10" src="../assets/RT.svg" alt="">
 
     </div> -->
+    <ButtonCheckout  class="m-auto -mt-40 mb-10 sticky top-0 z-20 pointer-events-auto"/>
     <div class="flex flex-col items-center gap-10 z-20 ">
- <FoodItem v-for="item in items" :name="item.name" :description=item.description :price="item.price"></FoodItem>
+ <FoodItem @buy="AddItem(item)" v-for="item in items" :name="item.name" :description=item.description :price="item.price"></FoodItem>
 
 
 
