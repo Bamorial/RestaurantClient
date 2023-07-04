@@ -16,15 +16,30 @@ const items = itemsGetter(id);
 //console.log(nonPars)
 
 let checkoutItems = JSON.parse(localStorage.getItem("basket"));
+console.log(checkoutItems)
 
 function AddItem(item) {
   if (!Array.isArray(checkoutItems)) {
     checkoutItems = [];
+    
   }
-  checkoutItems.push(item);
+  const existingItem = checkoutItems.find((checkoutItem) => checkoutItem.id === item.id);
+  if(existingItem){
+
+    
+    existingItem.quantity++
+    console.log(existingItem.quantity)
+
+  }
+  else{
+    item.quantity=1;
+    checkoutItems.push(item);
+   
+
+  }
   localStorage.setItem("basket", JSON.stringify(checkoutItems));
 
-  console.log(checkoutItems);
+
 }
 </script>
 

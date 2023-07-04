@@ -9,7 +9,7 @@ const Burgers = [
   },
   {
     name: "Club Sandwich",
-    id: "11",
+    id: "2",
     price: "22",
     description: "i dunno ",
     quantity: "1",
@@ -18,7 +18,7 @@ const Burgers = [
   },
   {
     name: "Pizza",
-    id: "11",
+    id: "3",
     price: "22",
     description: "hello world",
     quantity: "1",
@@ -27,7 +27,7 @@ const Burgers = [
   },
   {
     name: "Pizza but better",
-    id: "12",
+    id: "4",
     price: "22",
     description: "hello world x2",
     quantity: "1",
@@ -38,7 +38,7 @@ const Burgers = [
 const Pizza = [
   {
     name: "pizza",
-    id: "1",
+    id: "5",
     price: "25",
     description: "onionzzzzz, bunzzz",
     quantity: "1",
@@ -47,7 +47,7 @@ const Pizza = [
   },
   {
     name: "pizza",
-    id: "11",
+    id: "6",
     price: "22",
     description: "i dunno ",
     quantity: "1",
@@ -56,7 +56,7 @@ const Pizza = [
   },
   {
     name: "Pizza",
-    id: "11",
+    id: "7",
     price: "22",
     description: "hello world",
     quantity: "1",
@@ -65,7 +65,7 @@ const Pizza = [
   },
   {
     name: "Pizza but better",
-    id: "12",
+    id: "8",
     price: "22",
     description: "hello world x2",
     quantity: "1",

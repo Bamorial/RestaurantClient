@@ -1,6 +1,6 @@
 <template>
-  <button class="h-10 w-10 bg-slate-500" ></button>
-  <div class="text-center text-4xl font-bold font-serif -mt-40 mb-10">
+
+  <div class="border border-2 border-black bg-[#FFFCF3] m-10 rounded-lg text-center text-4xl font-bold font-serif -mt-40 mb-10">
     Nota dumneavoastră
   </div>
   <div class="text-center text-2xl font-semibold font-mono mb-10">
@@ -16,16 +16,16 @@
       <li v-for="(item, index) in items" class="grid grid-cols-4 mb-10">
         <div class="text font-serif font-semibold text-lg">{{ item.name }}</div>
         <div
-          class="flex justify-center text-sm font-mono font-semibold text-center"
+          class="flex justify-center gap-2  text-sm font-mono font-semibold text-center"
         >
-          <div @click="decreaseQuantity(item, index)">-</div>
-          <div>{{ item.quantity }}</div>
-          <div @click="increaseQuantity(item)">+</div>
+          <button class="border border-black shadow-lg h-6 rounded-lg w-6" @click="decreaseQuantity(item, index)">-</button>
+          <div class="text-center " >{{ item.quantity }}</div>
+          <button class="border border-black shadow-lg h-6 rounded-lg w-6" @click="increaseQuantity(item)">+</button>
         </div>
         <div class="text-sm font-mono font-semibold text-center">
-          {{ item.price }}
+          {{ item.price * item.quantity }}
         </div>
-        <button class="chStyle" @click="deleteItem(index)">Delete</button>
+        <button ontouchstart="" class="chStyle active:shadow-none active:translate-x-1 active:translate-y-1 " @click="deleteItem(index)">Delete</button>
       </li>
     </ul>
   </div>
@@ -69,6 +69,8 @@ function TotalPrice(items) {
 function deleteItem(index) {
   console.log(index);
   items.value.splice(index, 1);
+  items.value.quantity=1;
+  console.log(items.value.quantity)
   localStorage.setItem("basket", JSON.stringify(items));
   total = TotalPrice(items);
   console.log(items);
