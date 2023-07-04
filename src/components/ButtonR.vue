@@ -14,7 +14,7 @@ import { onMounted } from 'vue';
         imageLink: String,
     },
     mounted(){
-        console.log(imageLink);
+
     }
    }
     

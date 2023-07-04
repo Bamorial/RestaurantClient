@@ -1,47 +1,34 @@
 <script setup>
+import { RouterView, loadRouteLocation, routerKey, useRoute } from "vue-router";
+import ButtonR from "./ButtonR.vue";
+import FoodItem from "./FoodItem.vue";
+import ButtonCheckout from "./ButtonCheckout.vue";
 
+import itemsGetter from "../ItemsGetter.js";
+import { inject, onMounted } from "vue";
+import { jsx } from "vue/jsx-runtime";
 
-import { RouterView, loadRouteLocation, routerKey, useRoute } from 'vue-router';
-import ButtonR from './ButtonR.vue';
-import FoodItem from './FoodItem.vue';
-import ButtonCheckout from './ButtonCheckout.vue';
-
-import itemsGetter from '../ItemsGetter.js'
-import { inject, onMounted } from 'vue';
-import { jsx } from 'vue/jsx-runtime';
-
-
-const route= useRoute();
-const id= route.params.id
-localStorage.setItem('table', route.params.table)
-const items=itemsGetter(id)
-
+const route = useRoute();
+const id = route.params.id;
+localStorage.setItem("table", route.params.table);
+const items = itemsGetter(id);
 
 //console.log(nonPars)
 
-let checkoutItems=JSON.parse(localStorage.getItem('basket'))
+let checkoutItems = JSON.parse(localStorage.getItem("basket"));
 
-
-
-
-
-function AddItem(item){
+function AddItem(item) {
   if (!Array.isArray(checkoutItems)) {
     checkoutItems = [];
   }
   checkoutItems.push(item);
-  localStorage.setItem('basket',JSON.stringify(checkoutItems))
+  localStorage.setItem("basket", JSON.stringify(checkoutItems));
 
-  console.log(checkoutItems)
-
+  console.log(checkoutItems);
 }
 </script>
 
-
 <template>
-
-
-
   <!-- <div class="flex justify-between sticky top-0 -">
     
      <img class="scale-50 -ml-20 -mt-[70px] z-10 " src="../assets/LT.svg" alt="">
@@ -49,16 +36,21 @@ function AddItem(item){
      <img class="scale-50 -mr-20 -mt-[70px] z-10" src="../assets/RT.svg" alt="">
 
     </div> -->
-    <ButtonCheckout  class="m-auto -mt-40 mb-10 sticky top-0 z-20 pointer-events-auto"/>
-    <div class="flex flex-col items-center gap-10 z-20 ">
- <FoodItem @buy="AddItem(item)" v-for="item in items" :name="item.name" :description=item.description :price="item.price"></FoodItem>
+  <ButtonCheckout
+    class="m-auto -mt-40 mb-10 sticky top-4 z-20 pointer-events-auto"
+  />
+  <div class="flex flex-col items-center gap-10 z-20">
+    <FoodItem
+      @buy="AddItem(item)"
+      v-for="item in items"
+      :name="item.name"
+      :description="item.description"
+      :price="item.price"
+    ></FoodItem>
+  </div>
 
-
-
-</div>
-
-    <!-- lista -->
-<!-- <div class="flex flex-col items-center gap-10">
+  <!-- lista -->
+  <!-- <div class="flex flex-col items-center gap-10">
   <Item/>
   <Item/>
   <Item/>
@@ -72,7 +64,7 @@ function AddItem(item){
 
 </div> -->
 
-<!-- <div class="flex justify-between sticky bottom-0 h-24  ">
+  <!-- <div class="flex justify-between sticky bottom-0 h-24  ">
     
    
 
@@ -92,7 +84,4 @@ function AddItem(item){
  </div> -->
 </template>
 
-<style scoped>
-
-</style>
-
+<style scoped></style>
