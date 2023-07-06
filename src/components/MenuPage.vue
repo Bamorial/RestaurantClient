@@ -11,12 +11,21 @@ import { jsx } from "vue/jsx-runtime";
 const route = useRoute();
 const id = route.params.id;
 localStorage.setItem("table", route.params.table);
-const items = itemsGetter(id);
+// const itemsRes =await itemsGetter(id);
+// const items= itemsRes.produse
+let items=ref()
+items=await itemsGetter(id)
+
+
+for(let item of items.value){
+  console.log(item.name)
+}
+
 
 //console.log(nonPars)
 
 let checkoutItems = JSON.parse(localStorage.getItem("basket"));
-console.log(checkoutItems)
+
 
 function AddItem(item) {
   if (!Array.isArray(checkoutItems)) {
@@ -59,8 +68,8 @@ function AddItem(item) {
       @buy="AddItem(item)"
       v-for="item in items"
       :name="item.name"
-      :description="item.description"
-      :price="item.price"
+      :description="item.tipProdus"
+      :price="item.pretProdus"
     ></FoodItem>
   </div>
 

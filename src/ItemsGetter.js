@@ -1,3 +1,17 @@
+import axios from "axios";
+
+async function GetAll() {
+  try {
+    const response = await axios.get("http://127.0.0.1:8000/api/produse");
+
+    const data = response.data;
+
+    return data;
+  } catch (error) {
+    console.error("err", error);
+    return [];
+  }
+}
 const Burgers = [
   {
     name: "Burger",
@@ -73,7 +87,9 @@ const Pizza = [
     image: "ids312hfos",
   },
 ];
-function GetItems(category) {
+async function GetItems(category) {
+  const produse = await GetAll();
+
   if (category === "Pizza") return Pizza;
   if (category === "Burger") return Burgers;
 }
