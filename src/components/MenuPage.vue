@@ -3,23 +3,33 @@ import { RouterView, loadRouteLocation, routerKey, useRoute } from "vue-router";
 import ButtonR from "./ButtonR.vue";
 import FoodItem from "./FoodItem.vue";
 import ButtonCheckout from "./ButtonCheckout.vue";
-
+import { reactive } from "vue";
 import itemsGetter from "../ItemsGetter.js";
-import { inject, onMounted } from "vue";
-import { jsx } from "vue/jsx-runtime";
-
+import axios from "axios";
+import { ref } from "vue";
+import { onMounted } from "vue";
 const route = useRoute();
 const id = route.params.id;
 localStorage.setItem("table", route.params.table);
-// const itemsRes =await itemsGetter(id);
-// const items= itemsRes.produse
-let items=ref()
-items=await itemsGetter(id)
+// const items=await itemsGetter(id)
+// for(let item of items){
+//   console.log(item.numeProdus)
+// }
+const items = ref([]);
+const error = ref(null);
 
+    // Make the GET request on component mount
+    onMounted(async () => {
+      try {
+        // Perform the GET request
+        const response = await axios.get('http://127.0.0.1:8000/api/produse');
+        items.value = response.data.produse;
+        console.log(items.value)
+      } catch (err) {
+        error.value = err.message;
+      }
+    });
 
-for(let item of items.value){
-  console.log(item.name)
-}
 
 
 //console.log(nonPars)
@@ -67,9 +77,9 @@ function AddItem(item) {
     <FoodItem
       @buy="AddItem(item)"
       v-for="item in items"
-      :name="item.name"
-      :description="item.tipProdus"
-      :price="item.pretProdus"
+      :name="item.numeProdus"
+      :description="item.pret"
+      :price="item.pret"
     ></FoodItem>
   </div>
 

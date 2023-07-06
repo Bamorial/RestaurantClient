@@ -14,7 +14,7 @@
         <div class="text-sm font-mono font-semibold text-center">Pret</div>
       </li>
       <li v-for="(item, index) in items" class="grid grid-cols-4 mb-10">
-        <div class="text font-serif font-semibold text-lg">{{ item.name }}</div>
+        <div class="text font-serif font-semibold text-lg">{{ item.numeProdus }}</div>
         <div
           class="flex justify-center gap-2  text-sm font-mono font-semibold text-center"
         >
@@ -23,7 +23,7 @@
           <button class="border border-black shadow-lg h-6 rounded-lg w-6" @click="increaseQuantity(item)">+</button>
         </div>
         <div class="text-sm font-mono font-semibold text-center">
-          {{ item.price * item.quantity }}
+          {{ item.pret * item.quantity }}
         </div>
         <button ontouchstart="" class="chStyle active:shadow-none active:translate-x-1 active:translate-y-1 " @click="deleteItem(index)">Delete</button>
       </li>
@@ -44,6 +44,8 @@ function decreaseQuantity(item, index) {
   }
 }
 
+
+
 function increaseQuantity(item) {
   item.quantity++;
   total = TotalPrice(items);
@@ -56,7 +58,7 @@ function TotalPrice(items) {
 
     for (let item of items.value) {
 
-      sum += Number(item.price) * Number(item.quantity);
+      sum += Number(item.pret) * Number(item.quantity);
 
     }
     return sum;
