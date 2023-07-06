@@ -22,11 +22,11 @@ const error = ref(null);
     onMounted(async () => {
       try {
         // Perform the GET request
-        const response = await axios.get('http://127.0.0.1:8000/api/produse');
-        items.value = response.data.produse;
-        console.log(items.value)
-      } catch (err) {
-        error.value = err.message;
+        const response = await itemsGetter(id)
+        items.value=response
+      }
+      catch(err){
+        console.log(err)
       }
     });
 
