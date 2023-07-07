@@ -3,7 +3,7 @@ import { RouterView, loadRouteLocation, routerKey, useRoute } from "vue-router";
 import ButtonR from "./ButtonR.vue";
 import FoodItem from "./FoodItem.vue";
 import ButtonCheckout from "./ButtonCheckout.vue";
-import { reactive } from "vue";
+import { onUpdated, reactive } from "vue";
 import itemsGetter from "../ItemsGetter.js";
 import axios from "axios";
 import { ref } from "vue";
@@ -30,14 +30,19 @@ const error = ref(null);
       }
     });
 
-
-
 //console.log(nonPars)
-
+let checkoutTrigger= ref(false)
 let checkoutItems = JSON.parse(localStorage.getItem("basket"));
 
 
 function AddItem(item) {
+  checkoutTrigger.value=true
+  console.log(checkoutTrigger.value)
+  setTimeout(()=>{
+    checkoutTrigger.value=false
+    console.log(checkoutTrigger.value)
+  },1000)
+  
   if (!Array.isArray(checkoutItems)) {
     checkoutItems = [];
     
@@ -70,7 +75,7 @@ function AddItem(item) {
      <img class="scale-50 -mr-20 -mt-[70px] z-10" src="../assets/RT.svg" alt="">
 
     </div> -->
-  <ButtonCheckout
+  <ButtonCheckout :class="{shake: checkoutTrigger}"
     class="m-auto -mt-40 mb-10 sticky top-4 z-20 pointer-events-auto"
   />
   <div class="flex flex-col items-center gap-10 z-20">
@@ -78,7 +83,7 @@ function AddItem(item) {
       @buy="AddItem(item)"
       v-for="item in items"
       :name="item.numeProdus"
-      :description="item.pret"
+      :description="String(item.pret)"
       :price="item.pret"
     ></FoodItem>
   </div>

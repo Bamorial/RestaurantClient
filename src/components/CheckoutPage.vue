@@ -13,14 +13,14 @@
         <div class="text-sm font-mono font-semibold text-center">Cantitate</div>
         <div class="text-sm font-mono font-semibold text-center">Pret</div>
       </li>
-      <li v-for="(item, index) in items" class="grid grid-cols-4 mb-10">
-        <div class="text font-serif font-semibold text-lg">{{ item.numeProdus }}</div>
+      <li v-for="(item, index) in items" class="grid grid-cols-4 mb-10 gap-3">
+        <div class="text font-serif font-semibold text-[15px] -ml-6 ">{{ item.numeProdus }}</div>
         <div
           class="flex justify-center gap-2  text-sm font-mono font-semibold text-center"
         >
-          <button class="border border-black shadow-lg h-6 rounded-lg w-6" @click="decreaseQuantity(item, index)">-</button>
+          <button ontouchstart=""  class="border border-black littleShadow h-6 rounded-lg w-6 active:shadow-inner active:translate-x-1 active:translate-y-1" @click="decreaseQuantity(item, index)">-</button>
           <div class="text-center " >{{ item.quantity }}</div>
-          <button class="border border-black shadow-lg h-6 rounded-lg w-6" @click="increaseQuantity(item)">+</button>
+          <button ontouchstart=""  class="border border-black littleShadow h-6 rounded-lg w-6 active:shadow-inner active:translate-x-1 active:translate-y-1" @click="increaseQuantity(item)">+</button>
         </div>
         <div class="text-sm font-mono font-semibold text-center">
           {{ item.pret * item.quantity }}
